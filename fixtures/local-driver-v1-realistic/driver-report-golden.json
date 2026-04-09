@@ -1,0 +1,1046 @@
+{
+  "batchResult": {
+    "processedCount": 2,
+    "preparedCount": 1,
+    "statusCounts": {
+      "ready": 1,
+      "ready_with_contact_warning": 0,
+      "needs_external_verification": 0,
+      "already_revised_elsewhere": 0,
+      "excluded_internal_revision_found": 1,
+      "insufficient_contact_data": 0,
+      "identity_mismatch_review_required": 0
+    },
+    "recordOutcomes": [
+      {
+        "aciSourceRowKey": "aci-real-001",
+        "aciSourceBatchId": "batch-aci-real-001",
+        "identityKey": "AB123CD|car|2026-04",
+        "linkageResult": {
+          "linkageStatus": "linked",
+          "linkageReason": "exact_plate_and_vehicle_type_match",
+          "matchedCandidate": {
+            "sourceRowKey": "yap-real-001",
+            "sourceBatchId": "batch-yap-real-001",
+            "plate": "AB123CD",
+            "vehicleType": "car",
+            "contactName": "Mario Rossi",
+            "addressLine": "Via Milano 2",
+            "postalCode": "20100",
+            "city": "Milano",
+            "province": "MI",
+            "email": "MARIO@EXAMPLE.COM",
+            "phone": "+39 333 1112233"
+          },
+          "criteriaUsed": [
+            "plate_exact",
+            "vehicle_type_match",
+            "name_support_present",
+            "email_support_present",
+            "phone_support_present"
+          ],
+          "matchedCandidatesCount": 1,
+          "supportFieldsUsed": [
+            "vehicle_type",
+            "name",
+            "email",
+            "phone"
+          ],
+          "note": "Exact plate match is confirmed by matching vehicle type."
+        },
+        "usedContributions": [
+          "aci_candidate_due_context",
+          "yap_contact_enrichment",
+          "external_verification_result"
+        ],
+        "ignoredContributions": [],
+        "evaluation": {
+          "preparationEvaluationId": "local-driver-batch-002|eval|aci-real-001",
+          "identityKey": "AB123CD|car|2026-04",
+          "preparedKey": "AB123CD|car|2026-04|name=Mario Rossi|address=Via Milano 2|email=mario@example.com|phone=+393331112233|verification=verified_current|internal_revision=false",
+          "evaluationStatus": "completed",
+          "preparationStatus": "ready",
+          "preparationReasons": [
+            "record_prepared_with_deterministic_precedence"
+          ],
+          "sourceTrace": {
+            "contributingRawRecords": [
+              {
+                "sourceSystem": "aci_csv",
+                "sourceBatchId": "batch-aci-real-001",
+                "sourceRowKey": "aci-real-001",
+                "role": "candidate"
+              },
+              {
+                "sourceSystem": "yap_csv",
+                "sourceBatchId": "batch-yap-real-001",
+                "sourceRowKey": "yap-real-001",
+                "role": "contact_enrichment"
+              },
+              {
+                "sourceSystem": "external_verification_adapter",
+                "sourceRowKey": "ev-real-001",
+                "role": "external_verification_result"
+              }
+            ],
+            "winningFieldSources": [
+              {
+                "field": "vehicle_identity",
+                "winningSource": "aci_csv",
+                "appliedRule": "aci_candidate_due_context_primary"
+              },
+              {
+                "field": "due_context",
+                "winningSource": "aci_csv",
+                "appliedRule": "aci_candidate_due_context_primary"
+              },
+              {
+                "field": "contact_name",
+                "winningSource": "yap_csv",
+                "appliedRule": "yap_contact_primary"
+              },
+              {
+                "field": "contact_address",
+                "winningSource": "yap_csv",
+                "appliedRule": "yap_contact_primary"
+              },
+              {
+                "field": "contact_email",
+                "winningSource": "yap_csv",
+                "appliedRule": "yap_contact_primary"
+              },
+              {
+                "field": "contact_phone",
+                "winningSource": "yap_csv",
+                "appliedRule": "yap_contact_primary"
+              },
+              {
+                "field": "revision_verification",
+                "winningSource": "external_verification_adapter",
+                "appliedRule": "external_verification_adapter_revision_resolution_primary"
+              }
+            ],
+            "appliedPrecedences": [
+              {
+                "scope": "candidate_due_context",
+                "rule": "aci_candidate_due_context_primary",
+                "winningSource": "aci_csv",
+                "overriddenSources": []
+              },
+              {
+                "scope": "contact_profile",
+                "rule": "yap_contact_primary",
+                "winningSource": "yap_csv",
+                "overriddenSources": []
+              },
+              {
+                "scope": "revision_verification",
+                "rule": "external_verification_adapter_revision_resolution_primary",
+                "winningSource": "external_verification_adapter",
+                "overriddenSources": [
+                  "echoes_read_model"
+                ]
+              }
+            ],
+            "finalStatusReasons": [
+              "record_prepared_with_deterministic_precedence"
+            ],
+            "externalVerification": {
+              "sourceSystem": "external_verification_adapter",
+              "verificationStatus": "verified_current",
+              "verificationChannel": "manual_portale"
+            }
+          },
+          "preparedRecordId": "local-driver-batch-002|prepared|aci-real-001",
+          "startedAt": "2026-04-08T13:10:00Z",
+          "completedAt": "2026-04-08T13:10:01Z"
+        },
+        "preparedRecord": {
+          "preparationEvaluationId": "local-driver-batch-002|eval|aci-real-001",
+          "preparedRecordId": "local-driver-batch-002|prepared|aci-real-001",
+          "identityKey": "AB123CD|car|2026-04",
+          "preparedKey": "AB123CD|car|2026-04|name=Mario Rossi|address=Via Milano 2|email=mario@example.com|phone=+393331112233|verification=verified_current|internal_revision=false",
+          "vehicleIdentity": {
+            "identityKey": "AB123CD|car|2026-04",
+            "plate": "AB123CD",
+            "vehicleType": "car",
+            "dueMonth": 4,
+            "dueYear": 2026,
+            "normalizationTrace": [
+              {
+                "sourceSystem": "aci_csv",
+                "sourceBatchId": "batch-aci-real-001",
+                "sourceRowKey": "aci-real-001",
+                "note": "vehicle identity and due context normalized from ACI row"
+              }
+            ]
+          },
+          "contactProfile": {
+            "name": {
+              "value": "Mario Rossi",
+              "source": "yap_csv",
+              "quality": "enriched"
+            },
+            "address": {
+              "value": "Via Milano 2",
+              "source": "yap_csv",
+              "quality": "enriched"
+            },
+            "postalCode": {
+              "value": "20100",
+              "source": "yap_csv",
+              "quality": "enriched"
+            },
+            "city": {
+              "value": "Milano",
+              "source": "yap_csv",
+              "quality": "enriched"
+            },
+            "province": {
+              "value": "MI",
+              "source": "yap_csv",
+              "quality": "enriched"
+            },
+            "email": {
+              "value": "mario@example.com",
+              "source": "yap_csv",
+              "quality": "enriched"
+            },
+            "phone": {
+              "value": "+393331112233",
+              "source": "yap_csv",
+              "quality": "enriched"
+            },
+            "fieldSources": {
+              "name": "yap_csv",
+              "address": "yap_csv",
+              "postalCode": "yap_csv",
+              "city": "yap_csv",
+              "province": "yap_csv",
+              "email": "yap_csv",
+              "phone": "yap_csv"
+            },
+            "fieldQuality": {
+              "name": "enriched",
+              "address": "enriched",
+              "postalCode": "enriched",
+              "city": "enriched",
+              "province": "enriched",
+              "email": "enriched",
+              "phone": "enriched"
+            },
+            "matchConfidence": "strong"
+          },
+          "revisionVerification": {
+            "verificationStatus": "verified_current",
+            "verificationTrace": [
+              {
+                "sourceSystem": "external_verification_adapter",
+                "sourceRowKey": "ev-real-001",
+                "note": "verified current in realistic local mock"
+              }
+            ],
+            "lastRevisionDate": "2026-03-10",
+            "verifiedAt": "2026-04-08T11:30:00Z",
+            "verificationSource": "external_verification_adapter",
+            "verificationChannel": "manual_portale"
+          },
+          "preparationStatus": "ready",
+          "preparationReasons": [
+            "record_prepared_with_deterministic_precedence"
+          ],
+          "sourceTrace": {
+            "contributingRawRecords": [
+              {
+                "sourceSystem": "aci_csv",
+                "sourceBatchId": "batch-aci-real-001",
+                "sourceRowKey": "aci-real-001",
+                "role": "candidate"
+              },
+              {
+                "sourceSystem": "yap_csv",
+                "sourceBatchId": "batch-yap-real-001",
+                "sourceRowKey": "yap-real-001",
+                "role": "contact_enrichment"
+              },
+              {
+                "sourceSystem": "external_verification_adapter",
+                "sourceRowKey": "ev-real-001",
+                "role": "external_verification_result"
+              }
+            ],
+            "winningFieldSources": [
+              {
+                "field": "vehicle_identity",
+                "winningSource": "aci_csv",
+                "appliedRule": "aci_candidate_due_context_primary"
+              },
+              {
+                "field": "due_context",
+                "winningSource": "aci_csv",
+                "appliedRule": "aci_candidate_due_context_primary"
+              },
+              {
+                "field": "contact_name",
+                "winningSource": "yap_csv",
+                "appliedRule": "yap_contact_primary"
+              },
+              {
+                "field": "contact_address",
+                "winningSource": "yap_csv",
+                "appliedRule": "yap_contact_primary"
+              },
+              {
+                "field": "contact_email",
+                "winningSource": "yap_csv",
+                "appliedRule": "yap_contact_primary"
+              },
+              {
+                "field": "contact_phone",
+                "winningSource": "yap_csv",
+                "appliedRule": "yap_contact_primary"
+              },
+              {
+                "field": "revision_verification",
+                "winningSource": "external_verification_adapter",
+                "appliedRule": "external_verification_adapter_revision_resolution_primary"
+              }
+            ],
+            "appliedPrecedences": [
+              {
+                "scope": "candidate_due_context",
+                "rule": "aci_candidate_due_context_primary",
+                "winningSource": "aci_csv",
+                "overriddenSources": []
+              },
+              {
+                "scope": "contact_profile",
+                "rule": "yap_contact_primary",
+                "winningSource": "yap_csv",
+                "overriddenSources": []
+              },
+              {
+                "scope": "revision_verification",
+                "rule": "external_verification_adapter_revision_resolution_primary",
+                "winningSource": "external_verification_adapter",
+                "overriddenSources": [
+                  "echoes_read_model"
+                ]
+              }
+            ],
+            "finalStatusReasons": [
+              "record_prepared_with_deterministic_precedence"
+            ],
+            "externalVerification": {
+              "sourceSystem": "external_verification_adapter",
+              "verificationStatus": "verified_current",
+              "verificationChannel": "manual_portale"
+            }
+          },
+          "createdAt": "2026-04-08T13:10:01Z"
+        },
+        "diagnosticNote": "YAP linked via exact_plate_and_vehicle_type_match"
+      },
+      {
+        "aciSourceRowKey": "aci-real-002",
+        "aciSourceBatchId": "batch-aci-real-001",
+        "identityKey": "ZX987YT|car|2026-05",
+        "linkageResult": {
+          "linkageStatus": "linked",
+          "linkageReason": "exact_plate_and_vehicle_type_match",
+          "matchedCandidate": {
+            "sourceRowKey": "yap-real-002",
+            "sourceBatchId": "batch-yap-real-001",
+            "plate": "ZX987YT",
+            "vehicleType": "car"
+          },
+          "criteriaUsed": [
+            "plate_exact",
+            "vehicle_type_match"
+          ],
+          "matchedCandidatesCount": 1,
+          "supportFieldsUsed": [
+            "vehicle_type"
+          ],
+          "note": "Exact plate match is confirmed by matching vehicle type."
+        },
+        "usedContributions": [
+          "aci_candidate_due_context",
+          "yap_contact_enrichment",
+          "echoes_internal_revision_state"
+        ],
+        "ignoredContributions": [],
+        "evaluation": {
+          "preparationEvaluationId": "local-driver-batch-002|eval|aci-real-002",
+          "identityKey": "ZX987YT|car|2026-05",
+          "preparedKey": null,
+          "evaluationStatus": "completed",
+          "preparationStatus": "excluded_internal_revision_found",
+          "preparationReasons": [
+            "internal_revision_found_in_echoes"
+          ],
+          "sourceTrace": {
+            "contributingRawRecords": [
+              {
+                "sourceSystem": "aci_csv",
+                "sourceBatchId": "batch-aci-real-001",
+                "sourceRowKey": "aci-real-002",
+                "role": "candidate"
+              },
+              {
+                "sourceSystem": "yap_csv",
+                "sourceBatchId": "batch-yap-real-001",
+                "sourceRowKey": "yap-real-002",
+                "role": "contact_enrichment"
+              },
+              {
+                "sourceSystem": "echoes_read_model",
+                "sourceRowKey": "echoes-real-002",
+                "role": "internal_revision_history"
+              }
+            ],
+            "winningFieldSources": [
+              {
+                "field": "vehicle_identity",
+                "winningSource": "aci_csv",
+                "appliedRule": "aci_candidate_due_context_primary"
+              },
+              {
+                "field": "due_context",
+                "winningSource": "aci_csv",
+                "appliedRule": "aci_candidate_due_context_primary"
+              },
+              {
+                "field": "contact_name",
+                "winningSource": "none",
+                "appliedRule": "yap_contact_primary"
+              },
+              {
+                "field": "contact_address",
+                "winningSource": "none",
+                "appliedRule": "yap_contact_primary"
+              },
+              {
+                "field": "contact_email",
+                "winningSource": "none",
+                "appliedRule": "yap_contact_primary"
+              },
+              {
+                "field": "contact_phone",
+                "winningSource": "none",
+                "appliedRule": "yap_contact_primary"
+              },
+              {
+                "field": "revision_verification",
+                "winningSource": "echoes_read_model",
+                "appliedRule": "echoes_internal_revision_exclusion_primary"
+              }
+            ],
+            "appliedPrecedences": [
+              {
+                "scope": "candidate_due_context",
+                "rule": "aci_candidate_due_context_primary",
+                "winningSource": "aci_csv",
+                "overriddenSources": []
+              },
+              {
+                "scope": "contact_profile",
+                "rule": "yap_contact_primary",
+                "winningSource": "yap_csv",
+                "overriddenSources": []
+              },
+              {
+                "scope": "revision_verification",
+                "rule": "echoes_internal_revision_exclusion_primary",
+                "winningSource": "echoes_read_model",
+                "overriddenSources": []
+              }
+            ],
+            "finalStatusReasons": [
+              "internal_revision_found_in_echoes"
+            ]
+          },
+          "preparedRecordId": null,
+          "startedAt": "2026-04-08T13:10:00Z",
+          "completedAt": "2026-04-08T13:10:01Z"
+        },
+        "preparedRecord": null,
+        "diagnosticNote": "YAP linked via exact_plate_and_vehicle_type_match"
+      }
+    ]
+  },
+  "persistResult": {
+    "mode": "dry_run",
+    "preparationRuleVersion": "fusion-layer-v1",
+    "evaluationCount": 2,
+    "preparedRecordCount": 1,
+    "statusCounts": {
+      "ready": 1,
+      "ready_with_contact_warning": 0,
+      "needs_external_verification": 0,
+      "already_revised_elsewhere": 0,
+      "excluded_internal_revision_found": 1,
+      "insufficient_contact_data": 0,
+      "identity_mismatch_review_required": 0
+    },
+    "evaluationWrites": [
+      {
+        "preparationEvaluationId": "local-driver-batch-002|eval|aci-real-001",
+        "identityKey": "AB123CD|car|2026-04",
+        "preparationRuleVersion": "fusion-layer-v1",
+        "evaluationStatus": "completed",
+        "preparationStatus": "ready",
+        "preparationReasons": [
+          "record_prepared_with_deterministic_precedence"
+        ],
+        "matchingTrace": {
+          "aciSourceRowKey": "aci-real-001",
+          "aciSourceBatchId": "batch-aci-real-001",
+          "linkageResult": {
+            "linkageStatus": "linked",
+            "linkageReason": "exact_plate_and_vehicle_type_match",
+            "matchedCandidate": {
+              "sourceRowKey": "yap-real-001",
+              "sourceBatchId": "batch-yap-real-001",
+              "plate": "AB123CD",
+              "vehicleType": "car",
+              "contactName": "Mario Rossi",
+              "addressLine": "Via Milano 2",
+              "postalCode": "20100",
+              "city": "Milano",
+              "province": "MI",
+              "email": "MARIO@EXAMPLE.COM",
+              "phone": "+39 333 1112233"
+            },
+            "criteriaUsed": [
+              "plate_exact",
+              "vehicle_type_match",
+              "name_support_present",
+              "email_support_present",
+              "phone_support_present"
+            ],
+            "matchedCandidatesCount": 1,
+            "supportFieldsUsed": [
+              "vehicle_type",
+              "name",
+              "email",
+              "phone"
+            ],
+            "note": "Exact plate match is confirmed by matching vehicle type."
+          },
+          "usedContributions": [
+            "aci_candidate_due_context",
+            "yap_contact_enrichment",
+            "external_verification_result"
+          ],
+          "ignoredContributions": [],
+          "diagnosticNote": "YAP linked via exact_plate_and_vehicle_type_match"
+        },
+        "sourceTrace": {
+          "contributingRawRecords": [
+            {
+              "sourceSystem": "aci_csv",
+              "sourceBatchId": "batch-aci-real-001",
+              "sourceRowKey": "aci-real-001",
+              "role": "candidate"
+            },
+            {
+              "sourceSystem": "yap_csv",
+              "sourceBatchId": "batch-yap-real-001",
+              "sourceRowKey": "yap-real-001",
+              "role": "contact_enrichment"
+            },
+            {
+              "sourceSystem": "external_verification_adapter",
+              "sourceRowKey": "ev-real-001",
+              "role": "external_verification_result"
+            }
+          ],
+          "winningFieldSources": [
+            {
+              "field": "vehicle_identity",
+              "winningSource": "aci_csv",
+              "appliedRule": "aci_candidate_due_context_primary"
+            },
+            {
+              "field": "due_context",
+              "winningSource": "aci_csv",
+              "appliedRule": "aci_candidate_due_context_primary"
+            },
+            {
+              "field": "contact_name",
+              "winningSource": "yap_csv",
+              "appliedRule": "yap_contact_primary"
+            },
+            {
+              "field": "contact_address",
+              "winningSource": "yap_csv",
+              "appliedRule": "yap_contact_primary"
+            },
+            {
+              "field": "contact_email",
+              "winningSource": "yap_csv",
+              "appliedRule": "yap_contact_primary"
+            },
+            {
+              "field": "contact_phone",
+              "winningSource": "yap_csv",
+              "appliedRule": "yap_contact_primary"
+            },
+            {
+              "field": "revision_verification",
+              "winningSource": "external_verification_adapter",
+              "appliedRule": "external_verification_adapter_revision_resolution_primary"
+            }
+          ],
+          "appliedPrecedences": [
+            {
+              "scope": "candidate_due_context",
+              "rule": "aci_candidate_due_context_primary",
+              "winningSource": "aci_csv",
+              "overriddenSources": []
+            },
+            {
+              "scope": "contact_profile",
+              "rule": "yap_contact_primary",
+              "winningSource": "yap_csv",
+              "overriddenSources": []
+            },
+            {
+              "scope": "revision_verification",
+              "rule": "external_verification_adapter_revision_resolution_primary",
+              "winningSource": "external_verification_adapter",
+              "overriddenSources": [
+                "echoes_read_model"
+              ]
+            }
+          ],
+          "finalStatusReasons": [
+            "record_prepared_with_deterministic_precedence"
+          ],
+          "externalVerification": {
+            "sourceSystem": "external_verification_adapter",
+            "verificationStatus": "verified_current",
+            "verificationChannel": "manual_portale"
+          }
+        },
+        "startedAt": "2026-04-08T13:10:00Z",
+        "completedAt": "2026-04-08T13:10:01Z"
+      },
+      {
+        "preparationEvaluationId": "local-driver-batch-002|eval|aci-real-002",
+        "identityKey": "ZX987YT|car|2026-05",
+        "preparationRuleVersion": "fusion-layer-v1",
+        "evaluationStatus": "completed",
+        "preparationStatus": "excluded_internal_revision_found",
+        "preparationReasons": [
+          "internal_revision_found_in_echoes"
+        ],
+        "matchingTrace": {
+          "aciSourceRowKey": "aci-real-002",
+          "aciSourceBatchId": "batch-aci-real-001",
+          "linkageResult": {
+            "linkageStatus": "linked",
+            "linkageReason": "exact_plate_and_vehicle_type_match",
+            "matchedCandidate": {
+              "sourceRowKey": "yap-real-002",
+              "sourceBatchId": "batch-yap-real-001",
+              "plate": "ZX987YT",
+              "vehicleType": "car"
+            },
+            "criteriaUsed": [
+              "plate_exact",
+              "vehicle_type_match"
+            ],
+            "matchedCandidatesCount": 1,
+            "supportFieldsUsed": [
+              "vehicle_type"
+            ],
+            "note": "Exact plate match is confirmed by matching vehicle type."
+          },
+          "usedContributions": [
+            "aci_candidate_due_context",
+            "yap_contact_enrichment",
+            "echoes_internal_revision_state"
+          ],
+          "ignoredContributions": [],
+          "diagnosticNote": "YAP linked via exact_plate_and_vehicle_type_match"
+        },
+        "sourceTrace": {
+          "contributingRawRecords": [
+            {
+              "sourceSystem": "aci_csv",
+              "sourceBatchId": "batch-aci-real-001",
+              "sourceRowKey": "aci-real-002",
+              "role": "candidate"
+            },
+            {
+              "sourceSystem": "yap_csv",
+              "sourceBatchId": "batch-yap-real-001",
+              "sourceRowKey": "yap-real-002",
+              "role": "contact_enrichment"
+            },
+            {
+              "sourceSystem": "echoes_read_model",
+              "sourceRowKey": "echoes-real-002",
+              "role": "internal_revision_history"
+            }
+          ],
+          "winningFieldSources": [
+            {
+              "field": "vehicle_identity",
+              "winningSource": "aci_csv",
+              "appliedRule": "aci_candidate_due_context_primary"
+            },
+            {
+              "field": "due_context",
+              "winningSource": "aci_csv",
+              "appliedRule": "aci_candidate_due_context_primary"
+            },
+            {
+              "field": "contact_name",
+              "winningSource": "none",
+              "appliedRule": "yap_contact_primary"
+            },
+            {
+              "field": "contact_address",
+              "winningSource": "none",
+              "appliedRule": "yap_contact_primary"
+            },
+            {
+              "field": "contact_email",
+              "winningSource": "none",
+              "appliedRule": "yap_contact_primary"
+            },
+            {
+              "field": "contact_phone",
+              "winningSource": "none",
+              "appliedRule": "yap_contact_primary"
+            },
+            {
+              "field": "revision_verification",
+              "winningSource": "echoes_read_model",
+              "appliedRule": "echoes_internal_revision_exclusion_primary"
+            }
+          ],
+          "appliedPrecedences": [
+            {
+              "scope": "candidate_due_context",
+              "rule": "aci_candidate_due_context_primary",
+              "winningSource": "aci_csv",
+              "overriddenSources": []
+            },
+            {
+              "scope": "contact_profile",
+              "rule": "yap_contact_primary",
+              "winningSource": "yap_csv",
+              "overriddenSources": []
+            },
+            {
+              "scope": "revision_verification",
+              "rule": "echoes_internal_revision_exclusion_primary",
+              "winningSource": "echoes_read_model",
+              "overriddenSources": []
+            }
+          ],
+          "finalStatusReasons": [
+            "internal_revision_found_in_echoes"
+          ]
+        },
+        "startedAt": "2026-04-08T13:10:00Z",
+        "completedAt": "2026-04-08T13:10:01Z"
+      }
+    ],
+    "preparedRecordWrites": [
+      {
+        "preparedRecordId": "local-driver-batch-002|prepared|aci-real-001",
+        "preparationEvaluationId": "local-driver-batch-002|eval|aci-real-001",
+        "preparedKey": "AB123CD|car|2026-04|name=Mario Rossi|address=Via Milano 2|email=mario@example.com|phone=+393331112233|verification=verified_current|internal_revision=false",
+        "identityKey": "AB123CD|car|2026-04",
+        "vehicleIdentity": {
+          "identityKey": "AB123CD|car|2026-04",
+          "plate": "AB123CD",
+          "vehicleType": "car",
+          "dueMonth": 4,
+          "dueYear": 2026,
+          "normalizationTrace": [
+            {
+              "sourceSystem": "aci_csv",
+              "sourceBatchId": "batch-aci-real-001",
+              "sourceRowKey": "aci-real-001",
+              "note": "vehicle identity and due context normalized from ACI row"
+            }
+          ]
+        },
+        "contactProfile": {
+          "name": {
+            "value": "Mario Rossi",
+            "source": "yap_csv",
+            "quality": "enriched"
+          },
+          "address": {
+            "value": "Via Milano 2",
+            "source": "yap_csv",
+            "quality": "enriched"
+          },
+          "postalCode": {
+            "value": "20100",
+            "source": "yap_csv",
+            "quality": "enriched"
+          },
+          "city": {
+            "value": "Milano",
+            "source": "yap_csv",
+            "quality": "enriched"
+          },
+          "province": {
+            "value": "MI",
+            "source": "yap_csv",
+            "quality": "enriched"
+          },
+          "email": {
+            "value": "mario@example.com",
+            "source": "yap_csv",
+            "quality": "enriched"
+          },
+          "phone": {
+            "value": "+393331112233",
+            "source": "yap_csv",
+            "quality": "enriched"
+          },
+          "fieldSources": {
+            "name": "yap_csv",
+            "address": "yap_csv",
+            "postalCode": "yap_csv",
+            "city": "yap_csv",
+            "province": "yap_csv",
+            "email": "yap_csv",
+            "phone": "yap_csv"
+          },
+          "fieldQuality": {
+            "name": "enriched",
+            "address": "enriched",
+            "postalCode": "enriched",
+            "city": "enriched",
+            "province": "enriched",
+            "email": "enriched",
+            "phone": "enriched"
+          },
+          "matchConfidence": "strong"
+        },
+        "revisionVerification": {
+          "verificationStatus": "verified_current",
+          "verificationTrace": [
+            {
+              "sourceSystem": "external_verification_adapter",
+              "sourceRowKey": "ev-real-001",
+              "note": "verified current in realistic local mock"
+            }
+          ],
+          "lastRevisionDate": "2026-03-10",
+          "verifiedAt": "2026-04-08T11:30:00Z",
+          "verificationSource": "external_verification_adapter",
+          "verificationChannel": "manual_portale"
+        },
+        "preparationStatus": "ready",
+        "preparationReasons": [
+          "record_prepared_with_deterministic_precedence"
+        ],
+        "sourceTrace": {
+          "contributingRawRecords": [
+            {
+              "sourceSystem": "aci_csv",
+              "sourceBatchId": "batch-aci-real-001",
+              "sourceRowKey": "aci-real-001",
+              "role": "candidate"
+            },
+            {
+              "sourceSystem": "yap_csv",
+              "sourceBatchId": "batch-yap-real-001",
+              "sourceRowKey": "yap-real-001",
+              "role": "contact_enrichment"
+            },
+            {
+              "sourceSystem": "external_verification_adapter",
+              "sourceRowKey": "ev-real-001",
+              "role": "external_verification_result"
+            }
+          ],
+          "winningFieldSources": [
+            {
+              "field": "vehicle_identity",
+              "winningSource": "aci_csv",
+              "appliedRule": "aci_candidate_due_context_primary"
+            },
+            {
+              "field": "due_context",
+              "winningSource": "aci_csv",
+              "appliedRule": "aci_candidate_due_context_primary"
+            },
+            {
+              "field": "contact_name",
+              "winningSource": "yap_csv",
+              "appliedRule": "yap_contact_primary"
+            },
+            {
+              "field": "contact_address",
+              "winningSource": "yap_csv",
+              "appliedRule": "yap_contact_primary"
+            },
+            {
+              "field": "contact_email",
+              "winningSource": "yap_csv",
+              "appliedRule": "yap_contact_primary"
+            },
+            {
+              "field": "contact_phone",
+              "winningSource": "yap_csv",
+              "appliedRule": "yap_contact_primary"
+            },
+            {
+              "field": "revision_verification",
+              "winningSource": "external_verification_adapter",
+              "appliedRule": "external_verification_adapter_revision_resolution_primary"
+            }
+          ],
+          "appliedPrecedences": [
+            {
+              "scope": "candidate_due_context",
+              "rule": "aci_candidate_due_context_primary",
+              "winningSource": "aci_csv",
+              "overriddenSources": []
+            },
+            {
+              "scope": "contact_profile",
+              "rule": "yap_contact_primary",
+              "winningSource": "yap_csv",
+              "overriddenSources": []
+            },
+            {
+              "scope": "revision_verification",
+              "rule": "external_verification_adapter_revision_resolution_primary",
+              "winningSource": "external_verification_adapter",
+              "overriddenSources": [
+                "echoes_read_model"
+              ]
+            }
+          ],
+          "finalStatusReasons": [
+            "record_prepared_with_deterministic_precedence"
+          ],
+          "externalVerification": {
+            "sourceSystem": "external_verification_adapter",
+            "verificationStatus": "verified_current",
+            "verificationChannel": "manual_portale"
+          }
+        },
+        "preparationRuleVersion": "fusion-layer-v1",
+        "createdAt": "2026-04-08T13:10:01Z",
+        "updatedAt": "2026-04-08T13:10:01Z"
+      }
+    ],
+    "appliedEvaluationCount": 0,
+    "appliedPreparedRecordCount": 0
+  },
+  "inputDiagnostics": {
+    "aciAcceptedHeaders": [
+      "source_batch_id",
+      "source_row_key",
+      "targa",
+      "tipo_veicolo",
+      "mese_scadenza",
+      "anno_scadenza",
+      "intestatario",
+      "indirizzo",
+      "cap",
+      "comune",
+      "provincia"
+    ],
+    "yapAcceptedHeaders": [
+      "source_batch_id",
+      "source_row_key",
+      "targa",
+      "tipo_veicolo",
+      "nome_contatto",
+      "indirizzo",
+      "cap",
+      "citta",
+      "provincia",
+      "email",
+      "telefono"
+    ],
+    "aciHeaderMapping": {
+      "source_batch_id": "sourceBatchId",
+      "source_row_key": "sourceRowKey",
+      "targa": "plate",
+      "tipo_veicolo": "vehicleType",
+      "mese_scadenza": "dueMonth",
+      "anno_scadenza": "dueYear",
+      "intestatario": "ownerName",
+      "indirizzo": "addressLine",
+      "cap": "postalCode",
+      "comune": "city",
+      "provincia": "province"
+    },
+    "yapHeaderMapping": {
+      "source_batch_id": "sourceBatchId",
+      "source_row_key": "sourceRowKey",
+      "targa": "plate",
+      "tipo_veicolo": "vehicleType",
+      "nome_contatto": "contactName",
+      "indirizzo": "addressLine",
+      "cap": "postalCode",
+      "citta": "city",
+      "provincia": "province",
+      "email": "email",
+      "telefono": "phone"
+    },
+    "aciSkippedRowCount": 1,
+    "yapSkippedRowCount": 0,
+    "rowIssues": [
+      {
+        "fileKind": "aci",
+        "rowNumber": 4,
+        "issueKind": "row_width_mismatch",
+        "message": "Row 4 has 5 columns, expected 11",
+        "rawRow": {
+          "source_batch_id": "batch-aci-real-001",
+          "source_row_key": "aci-real-003",
+          "targa": "QQ111WW",
+          "tipo_veicolo": "car",
+          "mese_scadenza": "6",
+          "anno_scadenza": "",
+          "intestatario": "",
+          "indirizzo": "",
+          "cap": "",
+          "comune": "",
+          "provincia": ""
+        }
+      }
+    ]
+  },
+  "summary": {
+    "aciInputRowCount": 3,
+    "yapInputRowCount": 2,
+    "rowProcessedCount": 2,
+    "rowSkippedCount": 1,
+    "processedCount": 2,
+    "preparedCount": 1,
+    "statusCounts": {
+      "ready": 1,
+      "ready_with_contact_warning": 0,
+      "needs_external_verification": 0,
+      "already_revised_elsewhere": 0,
+      "excluded_internal_revision_found": 1,
+      "insufficient_contact_data": 0,
+      "identity_mismatch_review_required": 0
+    },
+    "recordsNeedingAttention": [],
+    "recordsExcluded": [
+      "aci-real-002"
+    ],
+    "dryRunPayloadCount": 3,
+    "appliedPayloadCount": 0,
+    "rowErrorCount": 1
+  }
+}

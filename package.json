@@ -1,0 +1,24 @@
+{
+  "name": "reminder-preparation-fusion-layer-v1",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reminder preparation and fusion layer for traceable reminder-ready records.",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "driver:local": "tsc -p tsconfig.json && node dist/cli/runLocalPreparationDriverV1.js",
+    "golden": "tsc -p tsconfig.json && node dist/goldenScenarios.js",
+    "start": "node dist/main.js"
+  },
+  "dependencies": {
+    "pg": "^8.13.1",
+    "pino": "^9.5.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/pg": "^8.11.10",
+    "typescript": "^5.7.2"
+  }
+}

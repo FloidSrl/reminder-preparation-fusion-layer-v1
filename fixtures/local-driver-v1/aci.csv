@@ -1,0 +1,3 @@
+sourceRowKey,plate,vehicleType,dueMonth,dueYear,ownerName,addressLine,postalCode,city,province
+aci-driver-001,AB123CD,car,4,2026,Mario Rossi,Via Roma 1,00100,Roma,RM
+aci-driver-002,ZX987YT,car,5,2026,Luigi Bianchi,Via Napoli 3,80100,Napoli,NA

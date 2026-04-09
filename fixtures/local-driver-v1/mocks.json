@@ -1,0 +1,21 @@
+{
+  "echoesStateByAciSourceRowKey": {
+    "aci-driver-002": {
+      "internalRevisionFound": true,
+      "sourceRowKey": "echoes-driver-002",
+      "note": "internal revision found in local mock"
+    }
+  },
+  "externalVerificationByAciSourceRowKey": {
+    "aci-driver-001": {
+      "sourceRowKey": "ev-driver-001",
+      "plate": "AB123CD",
+      "vehicleType": "car",
+      "verificationStatus": "verified_current",
+      "verificationChannel": "manual_portale",
+      "verifiedAt": "2026-04-08T11:30:00Z",
+      "lastRevisionDate": "2026-03-10",
+      "note": "verified current in local mock"
+    }
+  }
+}

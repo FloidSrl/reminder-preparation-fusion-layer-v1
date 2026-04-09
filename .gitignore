@@ -1,0 +1,16 @@
+node_modules/
+dist/
+coverage/
+*.log
+
+.env
+.env.*
+!.env.example
+
+reports/
+fixtures/**/driver-report.json
+
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

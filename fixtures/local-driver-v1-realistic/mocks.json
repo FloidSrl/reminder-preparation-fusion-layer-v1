@@ -1,0 +1,21 @@
+{
+  "echoesStateByAciSourceRowKey": {
+    "aci-real-002": {
+      "internalRevisionFound": true,
+      "sourceRowKey": "echoes-real-002",
+      "note": "internal revision found in realistic local mock"
+    }
+  },
+  "externalVerificationByAciSourceRowKey": {
+    "aci-real-001": {
+      "sourceRowKey": "ev-real-001",
+      "plate": "AB123CD",
+      "vehicleType": "car",
+      "verificationStatus": "verified_current",
+      "verificationChannel": "manual_portale",
+      "verifiedAt": "2026-04-08T11:30:00Z",
+      "lastRevisionDate": "2026-03-10",
+      "note": "verified current in realistic local mock"
+    }
+  }
+}

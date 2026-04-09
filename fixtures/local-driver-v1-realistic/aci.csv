@@ -1,0 +1,4 @@
+source_batch_id,source_row_key,targa,tipo_veicolo,mese_scadenza,anno_scadenza,intestatario,indirizzo,cap,comune,provincia
+batch-aci-real-001,aci-real-001," AB 123 CD ",car,4,2026,"Mario Rossi","Via Roma 1",00100,Roma,RM
+batch-aci-real-001,aci-real-002,ZX987YT,car,5,2026,"Luigi Bianchi","Via Napoli 3",80100,Napoli,NA
+batch-aci-real-001,aci-real-003,QQ111WW,car,6

@@ -1,0 +1,3 @@
+source_batch_id,source_row_key,targa,tipo_veicolo,nome_contatto,indirizzo,cap,citta,provincia,email,telefono
+batch-yap-real-001,yap-real-001,"AB123CD",car," Mario Rossi ","Via Milano 2",20100,Milano,MI," MARIO@EXAMPLE.COM ","+39 333 1112233"
+batch-yap-real-001,yap-real-002,ZX987YT,car,"","","","","","",""
