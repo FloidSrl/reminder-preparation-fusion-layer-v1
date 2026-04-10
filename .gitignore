@@ -14,3 +14,5 @@ fixtures/**/driver-report.json
 Thumbs.db
 .vscode/
 .idea/
+gitleaks-report.json
+gitleaks-dir-report.json
