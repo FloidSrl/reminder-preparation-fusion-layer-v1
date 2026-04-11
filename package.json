@@ -7,8 +7,13 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "check": "tsc -p tsconfig.json --noEmit",
+    "adapter:echoes:revision-v1": "tsc -p tsconfig.json && node dist/reminderRevisionV1/testing/runEchoesAdapterScenariosV1.js",
+    "adapter:echoes:realistic-v1": "tsc -p tsconfig.json && node dist/reminderRevisionV1/testing/runEchoesRealisticFixturePackV1.js",
+    "adapter:revify:revision-v1": "tsc -p tsconfig.json && node dist/reminderRevisionV1/testing/runRevifyOutputAdapterScenariosV1.js",
+    "e2e:pure:revision-v1": "tsc -p tsconfig.json && node dist/reminderRevisionV1/testing/runEndToEndPureValidationPackV1.js",
     "driver:local": "tsc -p tsconfig.json && node dist/cli/runLocalPreparationDriverV1.js",
     "golden": "tsc -p tsconfig.json && node dist/goldenScenarios.js",
+    "golden:revision-v1": "tsc -p tsconfig.json && node dist/reminderRevisionV1/testing/runGoldenScenariosV1.js",
     "start": "node dist/main.js"
   },
   "dependencies": {

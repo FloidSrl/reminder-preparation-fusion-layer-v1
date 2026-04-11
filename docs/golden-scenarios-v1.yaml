@@ -1,0 +1,149 @@
+golden_scenarios:
+  - scenario_id: ready_minimal
+    use_case: reminder_revisione_v1
+    inputs:
+      observations:
+        - fact_type: revision_due_fact
+          confidence: high
+        - fact_type: vehicle_identity_fact
+          confidence: high
+      recipient_resolution: owner_retained
+      addressing: direct_valid
+    expected:
+      readiness_status: ready
+      emits_communication_intent: true
+      blocking_reasons: []
+      review_reasons: []
+      warnings: []
+      due_basis: extracted_fact
+      due_precision: exact_day
+
+  - scenario_id: ready_with_warnings_mixed_addressing
+    use_case: reminder_revisione_v1
+    inputs:
+      observations:
+        - fact_type: revision_due_fact
+          confidence: high
+      recipient_resolution: owner_retained
+      addressing: mixed_source_but_valid
+    expected:
+      readiness_status: ready_with_warnings
+      emits_communication_intent: true
+      blocking_reasons: []
+      review_reasons: []
+      warnings:
+        - mixed_source_addressing
+
+  - scenario_id: blocked_addressing_invalid
+    use_case: reminder_revisione_v1
+    inputs:
+      observations:
+        - fact_type: revision_due_fact
+          confidence: high
+      recipient_resolution: owner_retained
+      addressing: invalid
+    expected:
+      readiness_status: blocked
+      emits_communication_intent: false
+      blocking_reasons:
+        - addressing_insufficient_or_invalid
+      review_reasons: []
+      warnings: []
+
+  - scenario_id: manual_review_recipient_ambiguous
+    use_case: reminder_revisione_v1
+    inputs:
+      observations:
+        - fact_type: registered_owner_fact
+          confidence: high
+      recipient_resolution: ambiguous
+      addressing: unresolved_because_recipient_ambiguous
+    expected:
+      readiness_status: manual_review_required
+      emits_communication_intent: false
+      blocking_reasons: []
+      review_reasons:
+        - recipient_ambiguity
+      warnings: []
+
+  - scenario_id: duplicate_or_superseded_case
+    use_case: reminder_revisione_v1
+    inputs:
+      observations:
+        - fact_type: revision_due_fact
+          confidence: high
+        - fact_type: duplicate_relation_fact
+          confidence: high
+      recipient_resolution: owner_retained
+      addressing: direct_valid
+    expected:
+      readiness_status: blocked
+      emits_communication_intent: false
+      blocking_reasons:
+        - duplicate_or_superseded_unresolved
+      review_reasons: []
+      warnings: []
+
+  - scenario_id: conflict_between_sources_on_due
+    use_case: reminder_revisione_v1
+    inputs:
+      observations:
+        - fact_type: artifact_presence_signal
+          confidence: medium
+        - fact_type: extracted_due_fact
+          confidence: high
+      external_contributions:
+        due_fact:
+          fact_type: external_due_fact
+          confidence: medium
+      recipient_resolution: owner_retained
+      addressing: direct_valid
+    expected:
+      readiness_status: ready_with_warnings
+      emits_communication_intent: true
+      blocking_reasons: []
+      review_reasons: []
+      warnings:
+        - minor_conflict_resolved_by_precedence
+      precedence_expectation:
+        winner: extracted_and_validated_observational_fact
+        loser:
+          - artifact_presence_signal
+          - external_due_fact
+
+  - scenario_id: not_ready_due_missing_but_open
+    use_case: reminder_revisione_v1
+    inputs:
+      observations:
+        - fact_type: vehicle_identity_fact
+          confidence: high
+      recipient_resolution: owner_retained
+      addressing: direct_valid
+    expected:
+      readiness_status: not_ready
+      emits_communication_intent: false
+      blocking_reasons: []
+      review_reasons: []
+      warnings: []
+      due_basis: null
+      due_precision: null
+
+  - scenario_id: manual_review_due_conflict
+    use_case: reminder_revisione_v1
+    inputs:
+      observations:
+        - fact_type: extracted_due_fact
+          confidence: medium
+      external_contributions:
+        due_fact:
+          fact_type: external_due_fact
+          confidence: medium
+      recipient_resolution: owner_retained
+      addressing: direct_valid
+    expected:
+      readiness_status: manual_review_required
+      emits_communication_intent: false
+      blocking_reasons: []
+      review_reasons:
+        - due_context_conflict
+      warnings: []

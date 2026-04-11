@@ -189,14 +189,22 @@ Decide solo se un record e':
 - escluso
 - da verificare
 
-Stati v1 da mantenere stretti:
+Per la slice documentale congelata `reminder revisione v1`, il readiness model v1 approvato e':
 - `ready`
+- `ready_with_warnings`
+- `not_ready`
+- `blocked`
+- `manual_review_required`
+
+Gli status storici:
 - `ready_with_contact_warning`
 - `needs_external_verification`
 - `already_revised_elsewhere`
 - `excluded_internal_revision_found`
 - `insufficient_contact_data`
 - `identity_mismatch_review_required`
+
+appartengono a una fase precedente del repo e non sono il modello documentale congelato della v1 approvata per questa slice.
 
 Nuovi casi reali, in v1, devono preferibilmente ricadere in questi stati tramite `preparation_reasons`, senza proliferare nuovi status.
 
